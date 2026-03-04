@@ -13,9 +13,10 @@ fs.readFile(link, 'utf-8', (err, texto) => {
 
 function quebraEmParagrafo(texto) {
     const paragrafos = texto.toLowerCase().split('\n');
-    const contagem = paragrafos.map((paragrafo) => {
-        return verificarPalavrasDuplicadas(paragrafo);
-    });
+    const contagem = paragrafos.flatMap((paragrafo) => {
+        if (!paragrafo) return [];
+            return verificarPalavrasDuplicadas(paragrafo); 
+    })
     console.log(contagem);
 }
 
@@ -27,7 +28,7 @@ function verificarPalavrasDuplicadas(texto) {
     const listaPalavras = texto.split(/\s+/); // separa por qualquer espaço
     const resultado = {}; // objeto correto
     listaPalavras.forEach((palavra) => {
-        if (palavra.lenth >= 3) {
+        if (palavra.length >= 3) {
         const palavraLimpa = limpaPalavras(palavra);
         resultado[palavraLimpa] = (resultado[palavraLimpa] || 0) + 1;
         }

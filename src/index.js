@@ -1,23 +1,27 @@
 const fs = require('fs');
+const { findPackageJSON } = require('module');
 
 const caminhoArquivo = process.argv;
 const link = caminhoArquivo[2];
 
-fs.readFile(link, 'utf-8', (err, texto) => {
-    if (err) {
-        console.log('Erro ao ler o arquivo:', err);
-        return;
+fs.readFile(link, 'utf-8', (erro, texto) => {
+    if (erro) { 
+    console.log('qual é o erro?', erro.code);
+        return
     }
-    quebraEmParagrafo(texto);
 });
 
-function quebraEmParagrafo(texto) {
-    const paragrafos = texto.toLowerCase().split('\n');
+function contarPalavras(texto) {
+    const paragrafos = extraiParagrafos(texto)
     const contagem = paragrafos.flatMap((paragrafo) => {
         if (!paragrafo) return [];
             return verificarPalavrasDuplicadas(paragrafo); 
     })
     console.log(contagem);
+}
+
+function extraiParagrafos(texto) {
+    return texto.toLowerCase().split('\n');
 }
 
 function limpaPalavras(palavra) {
@@ -35,3 +39,4 @@ function verificarPalavrasDuplicadas(texto) {
     })
     return resultado;
 }
+5

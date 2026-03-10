@@ -1,4 +1,4 @@
-function trataErros(erro) {
+export default function trataErros(erro) {
     if (erro.code === 'ENOENT') {
         throw new Error ('Arquivo não encontrado');
     } else {
@@ -6,4 +6,3 @@ function trataErros(erro) {
     }
 }
 
-module.exports = trataErros;

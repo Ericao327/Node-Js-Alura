@@ -129,10 +129,4 @@ Node-Js-Alura/
 
 ---
 
-## 📝 Licença
-
-Este projeto está sob licença MIT. Veja mais detalhes em LICENSE.
-
----
-
 **Desenvolvido durante o curso da Alura** 🎉
